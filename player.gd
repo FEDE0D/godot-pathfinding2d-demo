@@ -1,6 +1,8 @@
 
 extends RigidBody2D
 
+export var speed = 200
+
 # points in the path
 var points = []
 
@@ -12,8 +14,8 @@ func _fixed_process(delta):
 	points = get_node("../Navigation2D").get_simple_path(get_global_pos(), get_global_mouse_pos(), false)
 	# if the path has more than one point
 	if points.size() > 1:
-		var impulse = (points[1] - get_global_pos()).normalized() # direction of movement
-		apply_impulse(Vector2(), impulse * 2000 * delta) # we apply some impulse in the direction of mov
+		var direction = (points[1] - get_global_pos()).normalized() # direction of movement
+		set_linear_velocity(direction*speed)
 		update() # we update the node so it has to draw it self again
 
 func _draw():
