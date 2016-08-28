@@ -1,0 +1,36 @@
+[gd_resource type="TileSet" load_steps=5 format=1]
+
+[ext_resource path="res://res/floor.png" type="Texture" id=1]
+[ext_resource path="res://res/obstacle-grass.png" type="Texture" id=2]
+
+[sub_resource type="NavigationPolygon" id=1]
+
+vertices = Vector2Array( 32, -32, 32, 32, -32, 32, -32, -32 )
+polygons = [ IntArray( 0, 1, 2, 3 ) ]
+outlines = [ Vector2Array( -32, -32, -32, 32, 32, 32, 32, -32 ) ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 32 )
+
+[resource]
+
+0/name = "floor"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/region = Rect2( 0, 0, 0, 0 )
+0/occluder_offset = Vector2( 32, 32 )
+0/navigation_offset = Vector2( 32, 32 )
+0/navigation = SubResource( 1 )
+0/shape_offset = Vector2( 0, 0 )
+0/shapes = [  ]
+1/name = "obstacle"
+1/texture = ExtResource( 2 )
+1/tex_offset = Vector2( 0, 0 )
+1/region = Rect2( 0, 0, 0, 0 )
+1/occluder_offset = Vector2( 32, 32 )
+1/navigation_offset = Vector2( 32, 32 )
+1/shape_offset = Vector2( 32, 32 )
+1/shapes = [ SubResource( 2 ) ]
+

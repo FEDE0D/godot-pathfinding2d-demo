@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://res/floor.png" type="Texture" id=1]
+[ext_resource path="res://res/obstacle-grass.png" type="Texture" id=2]
+
+[sub_resource type="NavigationPolygon" id=2]
+
+vertices = Vector2Array( 32, -32, 32, 32, -32, 32, -32, -32 )
+polygons = [ IntArray( 0, 1, 2, 3 ) ]
+outlines = [ Vector2Array( -32, -32, -32, 32, 32, 32, 32, -32 ) ]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 32 )
+
+[node name="tileset" type="Node"]
+
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="floor" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 32, 32 )
+texture = ExtResource( 1 )
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="floor"]
+
+navpoly = SubResource( 2 )
+enabled = true
+
+[node name="obstacle" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 96, 32 )
+texture = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="obstacle"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle/StaticBody2D"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = -1
+
+
