@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
 [ext_resource path="res://res/hero-down.png" type="Texture" id=2]
@@ -11,12 +11,12 @@ height = 2.0
 
 [node name="player" type="RigidBody2D"]
 
-input/pickable = false
+input_pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
+collision_layer = 1
+collision_mask = 1
 mode = 2
 mass = 1.0
 friction = 1.0
@@ -28,17 +28,19 @@ contacts_reported = 0
 contact_monitor = false
 sleeping = false
 can_sleep = true
-velocity/linear = Vector2( 0, 0 )
-velocity/angular = 0.0
-damp_override/linear = 16.0
-damp_override/angular = -1.0
-script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"2D" }
+linear_velocity = Vector2( 0, 0 )
+angular_velocity = 0.0
+linear_damp = 16.0
+angular_damp = -1.0
+script = ExtResource( 1 )
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 speed = 200
 
 [node name="Sprite" type="Sprite" parent="."]
 
-transform/pos = Vector2( 1.64958, -15.9067 )
+position = Vector2( 1.64958, -15.9067 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -46,5 +48,3 @@ texture = ExtResource( 2 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = -1
-
-
